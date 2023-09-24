@@ -12,7 +12,9 @@
 
 输入“x/10i $pc ”查看即将要执行的十条汇编指令。  
 
-![这是图片](D:/picture/lab1/1.png)  
+![](https://github.com/123WangSiyu456/oswork/blob/master/picture/lab1/1.png?raw=true)
+
+
 
 ```
 0x1000: auipc t0,0x0` # t0 = pc + 0 << 12 = 0x1000
@@ -28,8 +30,6 @@
 
 ![](D:\picture\lab1\3.jpg)
 
-
-
 ```
 csrr a0,mhartid # a0 = mhartid = 0`
 
@@ -38,13 +38,9 @@ csrr a0,mhartid # a0 = mhartid = 0`
 `jr t0 # 跳转到地址0x80000000`
 ```
 
-
-
 输入“x/10i 0x80000000” : 显示 0x80000000 处的10条汇编指令。  该地址处加载的是作为bootloader的`OpenSBI.bin`，该处的作用为加载操作系统内核并启动操作系统的执行。
 
 ![](D:\picture\lab1\4.jpg)
-
-
 
 ```
 csrr a6,mhartid # a6 = mhartid (获取当前硬件线程的ID)
@@ -58,8 +54,6 @@ auipc t0,0x0 # t0 = pc + (0x0 << 12) = 0x8000001c
 addi t0,t0,1020 # t0 = t0 + 1020 = 0x80000400
 d t0,0(t0) # t0 = [t0 + 0] = [0x80000400] (从地址0x80000400加载一个双字到t0)`
 ```
-
-
 
 输入“b *0x80000000”，在0x80000000处打一个断点，然后输入“c”，执行直到碰到断点。  
 
