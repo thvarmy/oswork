@@ -29,11 +29,11 @@
 ![](https://github.com/123WangSiyu456/oswork/blob/master/picture/lab1/3.jpg?raw=true)
 
 ```
-csrr a0,mhartid # a0 = mhartid = 0`
+csrr a0,mhartid # a0 = mhartid = 0
 
-`ld t0,24(t0) # t0 = [t0 + 24] = 0x80000000`
+ld t0,24(t0) # t0 = [t0 + 24] = 0x80000000
 
-`jr t0 # 跳转到地址0x80000000`
+jr t0 # 跳转到地址0x80000000
 ```
 
 输入“x/10i 0x80000000” : 显示 0x80000000 处的10条汇编指令。  该地址处加载的是作为bootloader的`OpenSBI.bin`，该处的作用为加载操作系统内核并启动操作系统的执行。
@@ -118,7 +118,7 @@ if(ticks == 100) #当计数器加到100的时候
 if(num == 10) #判断打印次数，当打印次数为10时
 {
  sbi_shutdown(); #调用<sbi.h>中的关机函数关机
-}`
+}
 ```
 
 ![](https://github.com/123WangSiyu456/oswork/blob/master/picture/lab1/code.png?raw=true)
