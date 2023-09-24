@@ -109,7 +109,6 @@ d t0,0(t0) # t0 = [t0 + 0] = [0x80000400] (从地址0x80000400加载一个双字
 clock_set_next_event();
 ticks++; #计数器（ticks加一）
 if(ticks == 100) #当计数器加到100的时候
-if(ticks == 100) #当计数器加到100的时候
 {
  print_ticks(); #输出一个“100 ticks”表示触法了100次时钟中断，同时打印
  ticks = 0;
