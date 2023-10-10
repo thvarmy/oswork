@@ -12,7 +12,7 @@
 
 输入“x/10i $pc ”查看即将要执行的十条汇编指令
 
-![](https://github.com/123WangSiyu456/oswork/blob/master/picture/lab1/1.png?raw=true)
+![](https://github.com/thvarmy/oswork/blob/master/picture/lab1/1.png?raw=true)
 
 ```
 0x1000: auipc t0,0x0` # t0 = pc + 0 << 12 = 0x1000
@@ -20,13 +20,13 @@
 
 可以看到，现在指向的地址的0x1000，输入“ni”让程序往下执行一步  
 
-![](https://github.com/123WangSiyu456/oswork/blob/master/picture/lab1/2.jpg?raw=true)
+![](https://github.com/thvarmy/oswork/blob/master/picture/lab1/2.jpg?raw=true)
 
 可以看到现在程序指向的地址变成0x1004。  
 
 输入“info r t0”，查看寄存器t0的值，再输入“ni”往下执行一步，查看寄存器a1的值。由于执行了指令`addi    a1,t0,32` ，所以a1的值应该是t0寄存器中的值加32，显示正确。  
 
-![](https://github.com/123WangSiyu456/oswork/blob/master/picture/lab1/3.jpg?raw=true)
+![](https://github.com/thvarmy/oswork/blob/master/picture/lab1/3.jpg?raw=true)
 
 ```
 csrr a0,mhartid # a0 = mhartid = 0
@@ -38,7 +38,7 @@ jr t0 # 跳转到地址0x80000000
 
 输入“x/10i 0x80000000” : 显示 0x80000000 处的10条汇编指令。  该地址处加载的是作为bootloader的`OpenSBI.bin`，该处的作用为加载操作系统内核并启动操作系统的执行。
 
-![](https://github.com/123WangSiyu456/oswork/blob/master/picture/lab1/4.jpg?raw=true)
+![](https://github.com/thvarmy/oswork/blob/master/picture/lab1/4.jpg?raw=true)
 
 ```
 csrr a6,mhartid # a6 = mhartid (获取当前硬件线程的ID)
@@ -57,11 +57,11 @@ d t0,0(t0) # t0 = [t0 + 0] = [0x80000400] (从地址0x80000400加载一个双字
 
 输入“x/10i $pc ”查看即将要执行的十条汇编指令。 可以看到地址是指向0x80000000的，说明执行到了打的断点处，从这个地址开始执行接下来的指令。与上面“x/10i 0x80000000” 指令执行之后显示一致。  
 
-![](https://github.com/123WangSiyu456/oswork/blob/master/picture/lab1/5.jpg?raw=true)
+![](https://github.com/thvarmy/oswork/blob/master/picture/lab1/5.jpg?raw=true)
 
 输入“b *0x80200000”，在0x80200000处打一个断点，输入“c”，执行直到碰到断点。此时就进入了`kern_init`函数（`0x80200000`处是`kern_init`函数的入口点，地址`0x80200000`由`kernel.ld`中定义的`BASE_ADDRESS`（加载地址）所决定，标签`kern_entry`是在`kernel.ld`中定义的`ENTRY`（入口点））。这个时候发现在“make debug”的终端窗口进行了输出 ，说明OpenSBI已经成功启动。
 
-![](https://github.com/123WangSiyu456/oswork/blob/master/picture/lab1/6.jpg?raw=true)
+![](https://github.com/thvarmy/oswork/blob/master/picture/lab1/6.jpg?raw=true)
 
 #### 实验总结
 
@@ -120,19 +120,19 @@ if(num == 10) #判断打印次数，当打印次数为10时
 }
 ```
 
-![](https://github.com/123WangSiyu456/oswork/blob/master/picture/lab1/code.png?raw=true)
+![](https://github.com/thvarmy/oswork/blob/master/picture/lab1/code.png?raw=true)
 
 编写完成代码之后，进行测试。
 
 `make qemu`
 
-![](https://github.com/123WangSiyu456/oswork/blob/master/picture/lab1/8.png?raw=true)
+![](https://github.com/thvarmy/oswork/blob/master/picture/lab1/8.png?raw=true)
 
-![](https://github.com/123WangSiyu456/oswork/blob/master/picture/lab1/7.png?raw=true)
+![](https://github.com/thvarmy/oswork/blob/master/picture/lab1/7.png?raw=true)
 
 `make grade`
 
-![](https://github.com/123WangSiyu456/oswork/blob/master/picture/lab1/9.png?raw=true)
+![](https://github.com/thvarmy/oswork/blob/master/picture/lab1/9.png?raw=true)
 
 ### 扩展练习 Challenge1：描述与理解中断流程
 
