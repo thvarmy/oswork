@@ -128,8 +128,6 @@ proc_run用于将指定的进程切换到CPU上运行。它的大致执行步骤
 
 2个。创建第 0 个内核线程 idleproc；创建第 1 个内核线程 initproc；调度并执行内核线程 initproc。
 
-完成代码编写后，编译并运行代码：make qemu
-
 #### 扩展练习 Challenge：
 
 - 说明语句`local_intr_save(intr_flag);....local_intr_restore(intr_flag);`是如何实现开关中断的？
@@ -137,8 +135,8 @@ proc_run用于将指定的进程切换到CPU上运行。它的大致执行步骤
    
    - 该函数首先通过 `read_csr(sstatus)` 读取当前CPU核的状态寄存器（`sstatus` 寄存器）的值，这个寄存器包含了关于中断的信息。
    - 然后使用 `&` 运算符与 `SSTATUS_SIE` 进行按位与运算。`SSTATUS_SIE` 是一个宏定义，表示中断使能（interrupt enable）的位掩码。如果这个位为1，表示中断是被允许的。
-   - 如果 `SSTATUS_SIE` 位为1，说明中断是允许的，函数就会调用 `intr_disable()` 来禁用中断，并返回1，表示中断已被保存。
-   - 如果 `SSTATUS_SIE` 位为0，说明中断已经被禁用，函数不执行任何操作，并返回0，表示中断未被保存。
+   - 如果 `SSTATUS_SIE` 位为0，说明中断是允许的，函数就会调用 `intr_disable()` 来禁用中断，并返回0，表示中断已被保存。
+   - 如果 `SSTATUS_SIE` 位为1，说明中断已经被禁用，函数不执行任何操作，并返回1，表示中断未被保存。
 
 2. `__intr_restore` 函数：
    
