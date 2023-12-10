@@ -55,11 +55,10 @@ proc->yptr = NULL;
     }
     local_intr_restore(intr_flag);
 
-    
+
     // 将新建的进程设为就绪态
     //initproc->state = PROC_RUNNABLE;
     wakeup_proc(proc);
-
 ```
 
 ### 练习1：加载应用程序并执行（需要编程）
